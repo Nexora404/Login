@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+    
+  <style>
+  
+form {
+  background:  url('https://images.unsplash.com/photo-1508780709619-79562169bc64') no-repeat center center/cover;
+
+}
+
+
+form{
+  margin-top: 100px;
+  background-color: brown;
+  padding:  12px;
+  display:  grid;
+  border-radius: 12px;
+  border-right-color : Pink;
+}
+h1 {
+  font-family: Palatino ;
+  color: slateblue;
+  text-align: center;
+  
+}
+label {
+  font-family: Times;  
+  font-size:  x-large;
+  color: gold;
+}
+#pass, #name {
+  display: flex;
+  width: 75%;
+  border-radius: 18px;
+  background-color:  khaki;
+  height: 75%;
+  align-self: center;
+  font-size: calc(10em - 9.3em);
+  font-family:Papyrus   ; 
+  border-bottom-color:  green;
+  border-bottom-width: min(10px, 5px);
+  border-top-color: yellow;
+  border-top-width: 5px;
+}
+#checked{
+  font-size: 22px;
+  color: royalblue  ;
+  font-family: monaco ;
+  letter-spacing:  0;
+  
+}
+#res {
+  background-color: red;
+  Position: absolute;
+  top: calc( 0);
+  right: 0;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  margin-top: -30px;
+  margin-right: 20px;
+}
+#sub {
+  background-color: chartreuse;
+  width: 75%;
+  padding: 18px;
+  border-radius: 23px;
+  margin: 10px;
+  margin-left:  50px;
+  font-size: 19px;
+  font-family: palatino; 
+  
+}
+#hide {
+  background-color: skyblue;
+  position: fixed;
+  top: 0;
+  right: 0;
+  
+}
+.else {
+  text-align: center;
+  color: aliceblue;
+}
+.foot{
+  position: fixed;
+  bottom:0;
+  margin-bottom: -100px;
+  text-align: center;
+  color: chocolate;
+  width: 100%;
+  height: 20px;
+  backface-visibility: visible;
+  background-color: lightseagreen; 
+  
+}
+#show {
+  margin-top: 10px;
+  background-color: indigo;
+  padding: 13px;
+  border-radius: 13px;
+  width: 21%;
+  position: absolute;
+  Top: 0;
+}
+#errormsg {
+  color: red;
+  font-size: 14px;
+}
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-15px);
+  }
+  40% {
+    transform: translateX(15px);
+  }
+  60% {
+    transform: translateX(-15px);
+  }
+  80% {
+    transform: translateX(15px);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+.shake {
+  animation:  shake 0.3s;
+  border: 2px solid red;
+  
+}
+@keyframes usernameshake {
+  0% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-14px);
+  }
+  40% {
+    transform: translateX(14px);
+  }
+  60% {
+  
+    transform: translateX(-14px);
+}
+  80% {
+    transform: translateX(14px);
+  }
+  100 {
+    transform: translateX(0);
+  }
+}
+.usernameshake {
+  animation: usernameshake 0.3s;
+  border: 12px red solid;
+}
+  </style>
+  
+</head>
+<body>
+  <button id="hide" onclick="hidelogin()">X</button>
+  <form method="post" action="https://instagram.com/lynciemegan.com" id="login"
+     onsubmit=" return validateform(event)">
+    <h1>login form </h1>
+    <div class="res">
+    <input type="reset" value="X" id="res">
+      <button id="hide" onclick="hidelogin()">x</button>
+    </div>
+   
+  <label for="name">Username:
+    <input type="name" id="name" contenteditable="true"
+      maxlength="10"  placeholder="enter name" required="">
+    <span id="usererror"></span>
+  </label>
+    <br><br>
+  <label for="pass">password :
+    <input type="password" contenteditable="true" 
+      minlength="6" id="pass" placeholder="enter password" required="">
+    <span id="errormsg"></span>
+  </label>
+    <br><br>
+    <label for="check" id="checked" > remember me
+      <input type="checkbox" id="check" value="i agree">
+    </label>
+    <div >
+    <input type="submit" id="sub">
+    </div>
+    <p class="else"> do you have an account 
+      <a href="https://signup.com"> sign up</a>
+      
+    </p>
+  </form>
+  <button id="show" onclick="see()">show</button>
+</body>
+<footer>
+  <p class="foot"> this website is made by nexora404
+    
+    
+  </p>
+</footer>
+
+
+</script>
+<script>
+//validate form 
+function validateform() {
+const user_name = document.getElementById('name');
+const password = document.getElementById('pass');
+const errormsg = document.getElementById('errormsg');
+const passwordInput = document.getElementById('pass') ;   
+const usererror = document.getElementById('username') ;   
+const userInput = document.getElementById('name')    
+    
+//test username  
+const hasValue = /[0-9]/.test(user_name.value);
+    
+//test  password value 
+const hasLetters = /[a-zA-Z]/.test(password.value) ;
+const hasNumbers = /[0-9]/.test(password.value);
+    
+//control flow  for password 
+if (!hasLetters || !hasNumbers )   {
+    password.classList.add('error');
+    errormsg.textContent = "passowrd must containt both numbers and letters";
+    document.getElementById('pass').style.border = " 5px solid red ";
+    passwordInput.classList.add('shake');
+    
+    
+    setTimeout(function() {
+        passwordInput.classList.remove('shake')
+        
+    }, 300);
+    
+    return false;
+} else {
+    password.classList.remove('errormsg');
+    errormsg.textContent ="";
+    
+    return true;
+ }
+}
+
+//hide login form 
+function hidelogin() {
+    alert("hidden")
+    document.getElementById("login").style.display="none";
+    document.getElementById("hide").style.padding="10";
+   
+}
+//show login form
+function see() {
+    alert("showed")
+    document.getElementById("login").style.display="grid";
+    download.getElementById("hide").style.padding="10px";
+   
+}
+</script>
+</html>
