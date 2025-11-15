@@ -7,14 +7,14 @@
   <style>
   
 body{
-  background:  url('https://images.unsplash.com/photo-1508780709619-79562169bc64') no-repeat center center/cover;
+  background:  url('https://images.unsplash.com/photo-1508780709619-79562169bc64') repeat center center/cover;
 
 }
 
 
 form{
   margin-top: 100px;
-  background-color: brown;
+  background : linear-gradient( 180deg, white, grey);
   padding:  12px;
   display:  grid;
   border-radius: 12px;
@@ -35,7 +35,7 @@ label {
   display: flex;
   width: 75%;
   border-radius: 18px;
-  background-color:  khaki;
+  background-color: white ;
   height: 75%;
   align-self: center;
   font-size: calc(10em - 9.3em);
@@ -44,6 +44,8 @@ label {
   border-bottom-width: min(10px, 5px);
   border-top-color: yellow;
   border-top-width: 5px;
+  box-shadow:  5px 0 20px rgba(200, 105,0 , 0.8),
+                -5px 0 20px rgba(105,0, 300,0.8);
 }
 #checked{
   font-size: 22px;
